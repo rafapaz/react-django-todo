@@ -11,6 +11,7 @@ class TodoList extends React.Component {
         return this.props.list.map(e => 
         <tr key={e.id}>
             <td>{e.desc}</td>
+            <td>{(e.category) ? e.category.name : 'Nenhuma'}</td>
             <td><button onClick={() => this.props.handleRemove(e)}>Delete</button></td>
         </tr>
         );         
@@ -22,7 +23,7 @@ class TodoList extends React.Component {
                 <thead>
                     <tr>
                         <th>Descrição</th>
-                        <th></th>
+                        <th>Categoria</th>
                     </tr>
                 </thead>
                 <tbody>                    
