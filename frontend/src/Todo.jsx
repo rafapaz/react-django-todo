@@ -6,7 +6,7 @@ import TodoList from './TodoList';
 
 import './css/w3.css'
 
-const URL = 'http://localhost:8080/api/todos/'
+const URL = 'http://localhost:8082/api/todos/'
 
 class Todo extends React.Component {
     constructor(props) {

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Item, Category
@@ -7,6 +8,7 @@ from .serializers import ItemSerializer, CategorySerializer
 
 
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def get_items(request):
     if request.method == 'GET':
         items = Item.objects.all()
@@ -22,6 +24,7 @@ def get_items(request):
 
 
 @api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
 def delete_item(request, pk):
     try:
         item = Item.objects.get(pk=pk)
@@ -33,6 +36,7 @@ def delete_item(request, pk):
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def get_categories(request):    
     cats = Category.objects.all()
     serializer = CategorySerializer(cats, many=True)
