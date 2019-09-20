@@ -8,6 +8,7 @@ class Menu extends React.Component {
             <div className="w3-bar w3-black">
                 <Link to="/" className="w3-bar-item w3-button">Todo</Link>
                 <Link to="/about" className="w3-bar-item w3-button">About</Link>
+                <Link to="/logout" className="w3-bar-item w3-button w3-right">Logout</Link>
             </div> 
         );
     }

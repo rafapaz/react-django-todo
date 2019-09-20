@@ -1,12 +1,12 @@
 import React from 'react'
 import axios from 'axios'
 import Menu from './Menu';
+import URL from './Global'
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 
 import './css/w3.css'
 
-const URL = 'http://localhost:8082/api/todos/'
 
 class Todo extends React.Component {
     constructor(props) {
@@ -20,21 +20,26 @@ class Todo extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
         this.handleChangeCategory = this.handleChangeCategory.bind(this);
+
+        const token = localStorage.getItem('@todo-app/token');
+        this.config_axios = {
+            headers: { Authorization: "Token " + token }
+        };
                
         this.refresh(true);
     }
 
     refresh(first = false) {
-        axios.get(URL)
+        axios.get(URL, this.config_axios)
             .then(resp => this.setState({description: '', items: resp.data}));
         
-        axios.get(URL + 'categories/')
+        axios.get(URL + 'categories/', this.config_axios)
             .then(resp => this.setState({categories: resp.data, cat_sel: (first) ? resp.data[0].id : this.state.cat_sel}));
         
     }
 
     handleAdd() {
-        axios.post(URL, { 'desc': this.state.description, 'category_id': this.state.cat_sel })
+        axios.post(URL, { 'desc': this.state.description, 'category_id': this.state.cat_sel }, this.config_axios)
             .then(resp => this.refresh());
     }
 
@@ -43,7 +48,7 @@ class Todo extends React.Component {
     }
 
     handleRemove(item) {        
-        axios.delete(URL + item.id + '/')
+        axios.delete(URL + item.id + '/', this.config_axios)
             .then(resp => this.refresh());
     }
 
