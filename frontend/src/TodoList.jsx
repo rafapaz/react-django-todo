@@ -57,8 +57,8 @@ class TodoList extends React.Component {
             <table className="w3-table">
                 <thead>
                     <tr>
-                        <th><a href="#" onClick={() => this.handleChangeOrderBy((this.state.orderBy === "item asc") ? "item desc" : "item asc")} >Descrição</a></th>
-                        <th><a href="#" onClick={() => this.handleChangeOrderBy((this.state.orderBy === "category asc") ? "category desc" : "category asc")} >Categoria</a></th>
+                        <th><a href="#" onClick={() => this.handleChangeOrderBy((this.state.orderBy === "item asc") ? "item desc" : "item asc")} >Description</a></th>
+                        <th><a href="#" onClick={() => this.handleChangeOrderBy((this.state.orderBy === "category asc") ? "category desc" : "category asc")} >Category</a></th>
                     </tr>
                 </thead>
                 <tbody>                    

@@ -15,7 +15,7 @@ class TodoForm extends React.Component {
     render() {
         return (   
             <div role="form" >
-                <input id="description" onChange={this.props.handleChange} className="w3-input w3-border w3-round w3-col l5 w3-margin-right" placeholder="Adicione uma tarefa" value={this.props.description}></input>
+                <input id="description" onChange={this.props.handleChange} className="w3-input w3-border w3-round w3-col l5 w3-margin-right" placeholder="Add a task" value={this.props.description}></input>
                 <select className="w3-input w3-border w3-round w3-col l2  w3-margin-right"  onChange={this.props.handleChangeCategory}>
                     {this.printCategories()}
                 </select>
